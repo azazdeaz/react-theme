@@ -3,14 +3,14 @@ import assign from 'lodash/object/assign'
 import forOwn from 'lodash/object/forOwn'
 import cloneDeep from 'lodash/lang/cloneDeep'
 
-export default class Theme {
+export default class ReactTheme {
 
   constructor(sources) {
     this._sources = sources || {}
   }
 
   clone() {
-    return new Theme(cloneDeep(this._sources))
+    return new ReactTheme(cloneDeep(this._sources))
   }
 
   setSource(name, source) {
@@ -39,10 +39,8 @@ export default class Theme {
 
     var styleSrc = this._sources[name]
 
-    if (process.env.NODE_ENV !== 'production') {
-      if (!styleSrc) {
-        throw Error(`Can't find style source for "${name}"`)
-      }
+    if (!styleSrc) {
+      throw Error(`Can't find style source for "${name}"`)
     }
 
     styleSrc = styleSrc(this, mod)

@@ -1,3 +1,4 @@
 lib
+browser
 node_modules
 *.log

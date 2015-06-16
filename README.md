@@ -29,6 +29,7 @@ theme.setSource('label', () => ({
 
 theme.get('label') // {color: red}
 ```
+[JS Bin](http://jsbin.com/sesitu/edit?js,console)
 
 ###Mixins
 The returned style object can have a [old React style mixins](https://facebook.github.io/react/docs/reusable-components.html#mixins) with the name of other sources.

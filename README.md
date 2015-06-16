@@ -17,7 +17,7 @@ It isn't handle pseudo selectors, prefixing, media queries, or convert to CSS bu
 
 
 ###Basic usage
-A theme has a list of style sources. Every source is a function which returns an object: 
+A theme has a list of style sources. Every source is a function which returns an object:
 ```javascript
 import ReactTheme from 'react-theme'
 
@@ -45,6 +45,7 @@ theme.setSource('font', () => ({
 
 theme.get('label') // {color: red, fontFamily: 'Roboto'}
 ```
+[JS Bin](http://jsbin.com/qiyafa/edit?js,console)
 
 
 ###Doing logic in style source
@@ -63,6 +64,7 @@ theme.setSource('label', (theme) => {
 
 theme.get('label') // {color: 'navajowhite', backgroudColor: ?}
 ```
+[JS Bin](http://jsbin.com/nijisa/1/edit?js,console)
 You can manage (and later customize)  your other configs and variables (like colors, spacing, transitions, etc.) it the same way as the other styles!
 
 
@@ -85,7 +87,7 @@ theme.setSource('label', () => ({
 var modifier = {error: true, kind: 'dotted'}
 theme.get('label', modifier) // {color: 'red', borderStyle: 'dotted'}
 ```
-You can add some optional part to your style as objects and activate them with the values of the modifier object. 
+You can add some optional part to your style as objects and activate them with the values of the modifier object.
 Nested parts will be also resolved:
 ```javascript
 theme.setSource('label', () => ({
@@ -105,7 +107,7 @@ theme.setSource('label', () => ({
 var modifier = {primary: true, hover: true}
 theme.get('label', modifier) // {color: 'teal'}
 ```
-Modifiers is passed as the second argument to the style source so you you can use it to get other styles with the same modifier: 
+Modifiers is passed as the second argument to the style source so you you can use it to get other styles with the same modifier:
 ```javascript
 theme.setSource('label', (theme, modifier) => {
   var { lineHeight } = theme.get('config', modifier)
@@ -134,7 +136,7 @@ theme.extendSource('label', () => ({
 }))
 
 var modifier = {bordered: true}
-theme.get('label', modifier) 
+theme.get('label', modifier)
 // {color: 'lime', borderStyle: 'groove', resize: 'both'}
 ```
 Theme calls both source function and merges them.

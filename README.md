@@ -2,7 +2,7 @@
 Simple inline style manager for the organized and customizable css styles in React.
 If you know [material-ui](https://github.com/callemall/material-ui) it's similar to the [ThemeManager](http://material-ui.com/#/customization/themes) but more general.
 
-[Here is an example](https://github.com/azazdeaz/react-matterkit/tree/master/src/styles/sources) about managing the styles with react-theme.
+[Here is an example](https://github.com/azazdeaz/react-matterkit/tree/master/src/styles/sources) about managing a set of styles with react-theme and [Radium](https://github.com/FormidableLabs/radium).
 
 It isn't handle pseudo selectors, prefixing, media queries, or convert to CSS but works well with other libraries who does. (I'm using it with [Radium](https://github.com/FormidableLabs/radium))  
 
@@ -87,7 +87,7 @@ theme.setSource('label', () => ({
 var modifier = {error: true, kind: 'dotted'}
 theme.get('label', modifier) // {color: 'red', borderStyle: 'dotted'}
 ```
-[JS Bin](http://jsbin.com/fatuzi/4/edit?js,console)
+[JS Bin](http://jsbin.com/fatuzi/5/edit?js,console)
 
 You can add some optional part to your style as objects and activate them with the values of the modifier object.
 Nested parts will be also resolved:
@@ -108,7 +108,7 @@ theme.setSource('label', () => ({
 var modifier = {primary: true, hover: true}
 theme.get('label', modifier) // {color: 'teal'}
 ```
-[JS Bin](http://jsbin.com/zawifi/2/edit?js,console)
+[JS Bin](http://jsbin.com/zawifi/3/edit?js,console)
 
 Modifiers is passed as the second argument to the style source so you you can use it to get other styles with the same modifier:
 ```javascript
@@ -122,7 +122,7 @@ theme.setSource('label', (theme, modifier) => {
 })
 var style = theme.get('label', {size: 'xl'})
 ```
-[JS Bin](http://jsbin.com/mogigo/edit?js,console)
+[JS Bin](http://jsbin.com/mogigo/3/edit?js,console)
 ###Extending source
 ```theme.setSource(name, source)``` simply replaces  the old source if the theme has one with the same name. If you want to keep the original source and extend with an other one you can use ```theme.extendSource(name, source)```:
 ```javascript
@@ -143,7 +143,7 @@ var modifier = {bordered: true}
 theme.get('label', modifier)
 // {color: 'lime', borderStyle: 'groove', resize: 'both'}
 ```
-[JS Bin](http://jsbin.com/vibaxu/edit?js,console)
+[JS Bin](http://jsbin.com/vibaxu/5/edit?js,console)
 
 Theme calls both source function and merges them.
 
@@ -168,10 +168,17 @@ class Button extends React.Component() {
 ```
 [JS Bin]()```//TODO```
 
-###API ```//TODO```
+###API
 ####```theme.get(sourceName,  modifier,  additionalStyleObejct)```
+- sourceName [see above](#basic-usage)
+- modifier [see above](#using-modifiers)
+- additionalStyleObejct: This object will be merged with the resolved style object. It's usefull to merge the built in styles with the user dfined props.style.
 
 ####```theme.setSource(sourceName,  sourceFunction)```
+[see above](#basic-usage)
 
 ####```theme.extendSource(sourceName,  sourceFunction)```
+[see above](#extending source)
+
 ####```theme.clone()```
+Returns a new Theme instance whit the same style sources.

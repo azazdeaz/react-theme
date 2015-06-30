@@ -4,7 +4,7 @@ If you know [material-ui](https://github.com/callemall/material-ui) it's similar
 
 [Here is an example](https://github.com/azazdeaz/react-matterkit/tree/master/src/styles/sources) about managing a set of styles with react-theme and [Radium](https://github.com/FormidableLabs/radium).
 
-It isn't handle pseudo selectors, prefixing, media queries, or convert to CSS but works well with other libraries who does. (I'm using it with [Radium](https://github.com/FormidableLabs/radium))  
+It isn't handle pseudo selectors, prefixing, media queries, or convert to CSS but works well with other libraries who does.
 
 - [Basic usage](#basic-usage)
 - [Mixins](#mixins)
@@ -28,7 +28,7 @@ theme.setSource('label', () => ({
 
 theme.get('label') // {color: red}
 ```
-[JS Bin](http://jsbin.com/sesitu/3/edit?js,console)
+#####[JS Bin][jsbin-basic-useage]
 
 ###Mixins
 The returned style object can have a [old React style mixins](https://facebook.github.io/react/docs/reusable-components.html#mixins) with the name of other sources.
@@ -44,7 +44,7 @@ theme.setSource('font', () => ({
 
 theme.get('label') // {color: red, fontFamily: 'Roboto'}
 ```
-[JS Bin](http://jsbin.com/qiyafa/3/edit?js,console)
+#####[JS Bin][jsbin-mixins]
 
 
 ###Doing logic in style source
@@ -63,7 +63,7 @@ theme.setSource('label', (theme) => {
 
 theme.get('label') // {color: 'navajowhite', backgroudColor: ?}
 ```
-[JS Bin](http://jsbin.com/nijisa/4/edit?js,console)
+#####[JS Bin][jsbin-doing-logic-in-style]
 
 You can manage (and later customize)  your other configs and variables (like colors, spacing, transitions, etc.) it the same way as the other styles!
 
@@ -87,7 +87,7 @@ theme.setSource('label', () => ({
 var modifier = {error: true, kind: 'dotted'}
 theme.get('label', modifier) // {color: 'red', borderStyle: 'dotted'}
 ```
-[JS Bin](http://jsbin.com/fatuzi/5/edit?js,console)
+#####[JS Bin][jsbin-using-modifiers]
 
 You can add some optional part to your style as objects and activate them with the values of the modifier object.
 Nested parts will be also resolved:
@@ -108,7 +108,7 @@ theme.setSource('label', () => ({
 var modifier = {primary: true, hover: true}
 theme.get('label', modifier) // {color: 'teal'}
 ```
-[JS Bin](http://jsbin.com/zawifi/3/edit?js,console)
+#####[JS Bin][jsbin-nested-modifiers]
 
 Modifiers is passed as the second argument to the style source so you you can use it to get other styles with the same modifier:
 ```javascript
@@ -122,7 +122,7 @@ theme.setSource('label', (theme, modifier) => {
 })
 var style = theme.get('label', {size: 'xl'})
 ```
-[JS Bin](http://jsbin.com/mogigo/3/edit?js,console)
+#####[JS Bin][jsbin-modifiers-logic]
 ###Extending source
 ```theme.setSource(name, source)``` simply replaces  the old source if the theme has one with the same name. If you want to keep the original source and extend with an other one you can use ```theme.extendSource(name, source)```:
 ```javascript
@@ -143,7 +143,7 @@ var modifier = {bordered: true}
 theme.get('label', modifier)
 // {color: 'lime', borderStyle: 'groove', resize: 'both'}
 ```
-[JS Bin](http://jsbin.com/vibaxu/5/edit?js,console)
+#####[JS Bin][jsbin-extending-source]
 
 Theme calls both source function and merges them.
 
@@ -166,7 +166,7 @@ class Button extends React.Component() {
   }
 }
 ```
-[JS Bin]()```//TODO```
+#####[JS Bin - Bootstrap buttons example][jsbin-bootstrap-buttons-example]
 
 ###API
 ####```theme.get(sourceName,  modifier,  additionalStyleObejct)```
@@ -182,3 +182,12 @@ class Button extends React.Component() {
 
 ####```theme.clone()```
 Returns a new Theme instance whit the same style sources.
+
+[jsbin-basic-useage]: http://jsbin.com/sesitu/3/edit?js,console
+[jsbin-mixins]: http://jsbin.com/qiyafa/3/edit?js,console
+[jsbin-doing-logic-in-style]: http://jsbin.com/nijisa/4/edit?js,console
+[jsbin-using-modifiers]: http://jsbin.com/fatuzi/5/edit?js,console
+[jsbin-nested-modifiers]: http://jsbin.com/zawifi/3/edit?js,console
+[jsbin-modifiers-logic]: http://jsbin.com/mogigo/3/edit?js,console
+[jsbin-extending-source]: http://jsbin.com/vibaxu/5/edit?js,console
+[jsbin-bootstrap-buttons-example]: http://jsbin.com/rebojat/4/edit?js,output

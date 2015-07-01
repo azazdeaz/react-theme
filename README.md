@@ -26,7 +26,7 @@ theme.setSource('label', () => ({
   color: 'red'
 }))
 
-theme.get('label') // {color: red}
+theme.getStyle('label') // {color: red}
 ```
 #####[JS Bin][jsbin-basic-useage]
 
@@ -42,26 +42,26 @@ theme.setSource('font', () => ({
   fontFamily: 'Roboto'
 }))
 
-theme.get('label') // {color: red, fontFamily: 'Roboto'}
+theme.getStyle('label') // {color: red, fontFamily: 'Roboto'}
 ```
 #####[JS Bin][jsbin-mixins]
 
 
 ###Doing logic in style source
-The first argument of the style source is the theme so you can ```.get()``` other styles in it.
+The first argument of the style source is the theme so you can ```.getStyle()``` other styles in it.
 ```javascript
 theme.setSource('palette', () => ({
   textColor: 'navajowhite'
 }))
 theme.setSource('label', (theme) => {
-  var { textColor } = theme.get('palette')
+  var { textColor } = theme.getStyle('palette')
   return {
     color: textColor,
     backgroudColor: complement(textColor)
   }
 })
 
-theme.get('label') // {color: 'navajowhite', backgroudColor: ?}
+theme.getStyle('label') // {color: 'navajowhite', backgroudColor: ?}
 ```
 #####[JS Bin][jsbin-doing-logic-in-style]
 
@@ -85,7 +85,7 @@ theme.setSource('label', () => ({
 }))
 
 var modifier = {error: true, kind: 'dotted'}
-theme.get('label', modifier) // {color: 'red', borderStyle: 'dotted'}
+theme.getStyle('label', modifier) // {color: 'red', borderStyle: 'dotted'}
 ```
 #####[JS Bin][jsbin-using-modifiers]
 
@@ -106,21 +106,21 @@ theme.setSource('label', () => ({
 }))
 
 var modifier = {primary: true, hover: true}
-theme.get('label', modifier) // {color: 'teal'}
+theme.getStyle('label', modifier) // {color: 'teal'}
 ```
 #####[JS Bin][jsbin-nested-modifiers]
 
 Modifiers is passed as the second argument to the style source so you you can use it to get other styles with the same modifier:
 ```javascript
 theme.setSource('label', (theme, modifier) => {
-  var { lineHeight } = theme.get('config', modifier)
+  var { lineHeight } = theme.getStyle('config', modifier)
   return {
     //mixins are automatically resolved with the given modifier
     mixins: ['font', 'roundedBorders'],
     lineHeight
   }
 })
-var style = theme.get('label', {size: 'xl'})
+var style = theme.getStyle('label', {size: 'xl'})
 ```
 #####[JS Bin][jsbin-modifiers-logic]
 ###Extending source
@@ -140,7 +140,7 @@ theme.extendSource('label', () => ({
 }))
 
 var modifier = {bordered: true}
-theme.get('label', modifier)
+theme.getStyle('label', modifier)
 // {color: 'lime', borderStyle: 'groove', resize: 'both'}
 ```
 #####[JS Bin][jsbin-extending-source]
@@ -161,7 +161,7 @@ class Button extends React.Component() {
   }
   reder() {
     var {label, mod, style} = this.props;
-    var s = this.getTheme().get('button', mod, style)
+    var s = this.getTheme().getStyle('button', mod, style)
     return <button style={s}>{label}</button>
   }
 }
@@ -169,7 +169,7 @@ class Button extends React.Component() {
 #####[JS Bin - Bootstrap buttons example][jsbin-bootstrap-buttons-example]
 
 ###API
-####```theme.get(sourceName,  modifier,  additionalStyleObejct)```
+####```theme.getStyle(sourceName,  modifier,  additionalStyleObejct)```
 - sourceName [see above](#basic-usage)
 - modifier [see above](#using-modifiers)
 - additionalStyleObejct: This object will be merged with the resolved style object. It's usefull to merge the built in styles with the user dfined props.style.

@@ -18,11 +18,9 @@ export default class ReactTheme {
   }
 
   extendSource(name, source) {
-
     var originalSource = this._sources[name]
 
     if (originalSource) {
-
       this.setSource(name, (...args) => {
         var extension = source(...args)
         var original = originalSource(...args)
@@ -35,8 +33,12 @@ export default class ReactTheme {
     }
   }
 
-  get(name, mod, additionalStyle) {
-
+  get = (name, mod, additionalStyle) => {
+    console.warn('theme.get() is renamed to theme.getStyle()')
+    return this.getStyle(name, mod, additionalStyle)
+  }
+  
+  getStyle(name, mod, additionalStyle) {
     var styleSrc = this._sources[name]
 
     if (!styleSrc) {
@@ -53,7 +55,6 @@ export default class ReactTheme {
     }
 
     if (styleSrc.mixins) {
-
       let mixin = {}
 
       styleSrc.mixins.slice().forEach(mixinName => {
@@ -70,25 +71,18 @@ export default class ReactTheme {
   }
 
   resolveMod(styleSrc, mod) {
-
     forOwn(mod, (value, key) => {
-
       if (styleSrc[key]) {
-
         var modStyleSrc = styleSrc[key]
 
         if (typeof value === 'boolean') {
-
           if (value) {
-
             let modStyle = this.resolveMod(modStyleSrc, mod)
             assign(styleSrc, modStyle)
           }
         }
         else if (typeof value === 'string') {
-
           if (modStyleSrc[value]) {
-
             let modStyle = this.resolveMod(modStyleSrc[value], mod)
             assign(styleSrc, modStyle)
           }

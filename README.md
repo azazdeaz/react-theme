@@ -1,4 +1,4 @@
-#react-theme [![Build Status](https://img.shields.io/travis/azazdeaz/react-theme.svg?style=flat-square)](https://travis-ci.org/azazdeaz/react-theme)
+#react-theme [![Build Status](https://img.shields.io/travis/azazdeaz/react-theme.svg?style=flat-square)](https://travis-ci.org/azazdeaz/react-theme) [![Coverage Status](https://img.shields.io/coveralls/azazdeaz/react-theme.svg?style=flat-square)](https://coveralls.io/r/azazdeaz/react-theme?branch=master)
 Simple inline style manager for the organized and customizable css styles in React.
 If you know [material-ui](https://github.com/callemall/material-ui) it's similar to the [ThemeManager](http://material-ui.com/#/customization/themes) but more general.
 

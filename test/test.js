@@ -165,3 +165,25 @@ describe('resolve modifiers', () => {
     assert.strictEqual(style.qux, 6)
   })
 })
+
+describe('post processor', () => {
+  it('can set/getPostProcessor', () => {
+    var theme = new Theme()
+    var processor = () => {}
+    theme.setPostProcessor(processor)
+
+    assert.strictEqual(theme.getPostProcessor(), processor)
+  })
+
+  it('applies processor', () => {
+    var theme = new Theme()
+    theme.setPostProcessor(style => {
+      style.foo *= 2
+      return style
+    })
+    theme.setSource('a', () => ({foo: 1}))
+
+    var processedStyle = theme.getStyle('a')
+    assert.strictEqual(processedStyle.foo, 2)
+  })
+})

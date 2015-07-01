@@ -4,7 +4,6 @@ import forOwn from 'lodash/object/forOwn'
 import cloneDeep from 'lodash/lang/cloneDeep'
 
 export default class ReactTheme {
-
   constructor(sources) {
     this._sources = sources || {}
   }
@@ -37,7 +36,7 @@ export default class ReactTheme {
     console.warn('theme.get() is renamed to theme.getStyle()')
     return this.getStyle(name, mod, additionalStyle)
   }
-  
+
   getStyle(name, mod, additionalStyle) {
     var styleSrc = this._sources[name]
 
@@ -59,7 +58,7 @@ export default class ReactTheme {
 
       styleSrc.mixins.slice().forEach(mixinName => {
 
-        merge(mixin, this.get(mixinName, mod))
+        merge(mixin, this.getStyle(mixinName, mod))
       })
 
       delete styleSrc.mixins
@@ -67,6 +66,12 @@ export default class ReactTheme {
     }
 
     var ret = this.resolveMod(styleSrc, mod)
+
+    var postProcessor = this.getPostProcessor()
+    if (postProcessor) {
+      ret = postProcessor(ret)
+    }
+
     return (assign(ret, additionalStyle))
   }
 
@@ -91,5 +96,13 @@ export default class ReactTheme {
     })
 
     return styleSrc
+  }
+
+  setPostProcessor(processor) {
+    this._postProcessor = processor
+  }
+
+  getPostProcessor() {
+    return this._postProcessor
   }
 }

@@ -22,6 +22,28 @@ describe('Theme', () => {
     assert.strictEqual(style.foo, 1)
   })
 
+  it('throws on getStyle of undefined style source', () => {
+    var theme = new Theme()
+
+    assert.throws(() => theme.getStyle('unknown'), Error)
+  })
+
+  it('throws on style source don\'t returns an object', () => {
+    var theme = new Theme()
+    theme.setSource('a', () => false)
+
+    assert.throws(() => theme.getStyle('a'), Error)
+  })
+
+  it('lets use the deprecated get() alias', () => {
+    var theme = new Theme()
+    theme.setSource('a', () => ({foo: 1}))
+
+    var style = theme.get('a')
+
+    assert.strictEqual(style.foo, 1)
+  })
+
   it('is cloneable', () => {
     var theme = new Theme()
     theme.setSource('a', () => ({foo: 1}))
@@ -47,7 +69,7 @@ describe('Theme', () => {
     assert.strictEqual(style.mixins, undefined)
   })
 
-  it('is extendable', () => {
+  it('extend with extendSource', () => {
     var theme = new Theme()
 
     theme.setSource('a', () => ({foo: 1, bar: 1}))
@@ -56,6 +78,15 @@ describe('Theme', () => {
     var style = theme.getStyle('a')
 
     assert.deepEqual(style, {foo: 2, bar: 1})
+  })
+
+  it('use setSource instead of extendSource if the selected name free', () => {
+    var theme = new Theme()
+    var extender = () => {}
+    theme.setSource = (name, source) => {
+      assert.strictEqual(extender, source)
+    }
+    theme.extendSource('a', extender)
   })
 
   it('passes itself to the source function', () => {

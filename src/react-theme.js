@@ -46,11 +46,8 @@ export default class ReactTheme {
 
     styleSrc = styleSrc(this, mod)
 
-    if (!styleSrc) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn(`style source "${name}" doesn't return "${styleSrc}" instead an object!`)
-      }
-      styleSrc = {}
+    if (typeof styleSrc !== 'object') {
+      throw Error(`style source "${name}" returned "${styleSrc}" instead an object!`)
     }
 
     if (styleSrc.mixins) {

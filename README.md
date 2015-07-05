@@ -183,11 +183,11 @@ class Button extends React.Component() {
 ####```theme.clone()```
 Returns a new Theme instance whit the same style sources.
 
-[jsbin-basic-useage]: http://jsbin.com/sesitu/3/edit?js,console
-[jsbin-mixins]: http://jsbin.com/qiyafa/3/edit?js,console
-[jsbin-doing-logic-in-style]: http://jsbin.com/nijisa/4/edit?js,console
-[jsbin-using-modifiers]: http://jsbin.com/fatuzi/5/edit?js,console
-[jsbin-nested-modifiers]: http://jsbin.com/zawifi/3/edit?js,console
-[jsbin-modifiers-logic]: http://jsbin.com/mogigo/3/edit?js,console
-[jsbin-extending-source]: http://jsbin.com/vibaxu/5/edit?js,console
-[jsbin-bootstrap-buttons-example]: http://jsbin.com/rebojat/4/edit?js,output
+[jsbin-basic-useage]: http://jsbin.com/sesitu/4/edit?js,console
+[jsbin-mixins]: http://jsbin.com/qiyafa/5/edit?js,console
+[jsbin-doing-logic-in-style]: http://jsbin.com/nijisa/5/edit?js,console
+[jsbin-using-modifiers]: http://jsbin.com/fatuzi/6/edit?js,console
+[jsbin-nested-modifiers]: http://jsbin.com/zawifi/5/edit?js,console
+[jsbin-modifiers-logic]: http://jsbin.com/mogigo/5/edit?js,console
+[jsbin-extending-source]: http://jsbin.com/vibaxu/6/edit?js,console
+[jsbin-bootstrap-buttons-example]: http://jsbin.com/rebojat/5/edit?js,output

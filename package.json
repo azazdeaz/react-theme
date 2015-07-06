@@ -1,6 +1,6 @@
 {
   "name": "react-theme",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "organise your inline styles flexible and forkable",
   "main": "lib/react-theme.js",
   "scripts": {
@@ -14,6 +14,7 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "radium",
     "isomorphic",
     "theme",

@@ -39,16 +39,19 @@ describe('Theme', () => {
     var theme = new Theme()
     theme.setSource('a', () => ({foo: 1}))
 
-    var style = theme.get('a')
+    var style = theme.getStyle('a')
 
     assert.strictEqual(style.foo, 1)
   })
 
   it('is cloneable', () => {
     var theme = new Theme()
+    var processor = () => {}
     theme.setSource('a', () => ({foo: 1}))
+    theme.setPostProcessor(processor)
     var themeClone = theme.clone()
 
+    assert.strictEqual(themeClone.getPostProcessor(), processor)
     assert.notEqual(themeClone, theme)
     assert.deepEqual(theme.getStyle('a'), themeClone.getStyle('a'))
   })

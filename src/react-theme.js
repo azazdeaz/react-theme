@@ -9,7 +9,9 @@ export default class ReactTheme {
   }
 
   clone() {
-    return new ReactTheme(cloneDeep(this._sources))
+    var clonedTheme = new ReactTheme(cloneDeep(this._sources))
+    clonedTheme.setPostProcessor(this.getPostProcessor())
+    return clonedTheme
   }
 
   setSource(name, source) {

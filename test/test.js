@@ -17,7 +17,8 @@ describe('Theme', () => {
     var theme = new Theme()
     theme.setSource('a', () => ({foo: 1}))
 
-    var style = theme.getStyle('a')
+    //this will warn
+    var style = theme.get('a')
 
     assert.strictEqual(style.foo, 1)
   })

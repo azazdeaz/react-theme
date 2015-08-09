@@ -3,7 +3,7 @@
 Simple inline style manager for the organized and customizable css styles in React.
 If you know [material-ui](https://github.com/callemall/material-ui) it's similar to the [ThemeManager](http://material-ui.com/#/customization/themes) but more general.
 
-[Here is an example](https://github.com/azazdeaz/react-matterkit/tree/master/src/styles/sources) about managing a set of styles with react-theme and [Radium](https://github.com/FormidableLabs/radium).
+[Here is an example](https://github.com/azazdeaz/react-matterkit/tree/master/src/theme/sources) about managing a set of styles with react-theme and [Radium](https://github.com/FormidableLabs/radium).
 
 It isn't handle pseudo selectors, prefixing, media queries, or convert to CSS but works well with other libraries who does.
 

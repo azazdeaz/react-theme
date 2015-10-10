@@ -13,7 +13,7 @@ It isn't handle pseudo selectors, prefixing, media queries, or convert to CSS bu
 - [Using modifiers](#using-modifiers)
 - [Extending source](#extending-source)
 - [Button example](#button-example)
-- [API](#API)
+- [API](#api)
 
 
 ###Basic usage

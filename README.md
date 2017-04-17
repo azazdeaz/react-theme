@@ -1,4 +1,4 @@
-#react-theme [![Build Status](https://img.shields.io/travis/azazdeaz/react-theme.svg?style=flat-square)](https://travis-ci.org/azazdeaz/react-theme) [![Coverage Status](https://img.shields.io/coveralls/azazdeaz/react-theme.svg?style=flat-square)](https://coveralls.io/r/azazdeaz/react-theme?branch=master) [![npm](https://img.shields.io/npm/dm/react-theme.svg?style=flat-square)]()
+# react-theme [![Build Status](https://img.shields.io/travis/azazdeaz/react-theme.svg?style=flat-square)](https://travis-ci.org/azazdeaz/react-theme) [![Coverage Status](https://img.shields.io/coveralls/azazdeaz/react-theme.svg?style=flat-square)](https://coveralls.io/r/azazdeaz/react-theme?branch=master) [![npm](https://img.shields.io/npm/dm/react-theme.svg?style=flat-square)]()
 
 Simple inline style manager for the organized and customizable css styles in React.
 If you know [material-ui](https://github.com/callemall/material-ui) it's similar to the [ThemeManager](http://material-ui.com/#/customization/themes) but more general.
@@ -16,7 +16,7 @@ It isn't handle pseudo selectors, prefixing, media queries, or convert to CSS bu
 - [API](#api)
 
 
-###Basic usage
+### Basic usage
 A theme has a list of style sources. Every source is a function which returns an object:
 ```javascript
 import ReactTheme from 'react-theme'
@@ -29,9 +29,9 @@ theme.setSource('label', () => ({
 
 theme.getStyle('label') // {color: red}
 ```
-#####[JS Bin][jsbin-basic-useage]
+##### [JS Bin][jsbin-basic-useage]
 
-###Mixins
+### Mixins
 The returned style object can have a [old React style mixins](https://facebook.github.io/react/docs/reusable-components.html#mixins) with the name of other sources.
 ```javascript
 theme.setSource('label', () => ({
@@ -45,10 +45,10 @@ theme.setSource('font', () => ({
 
 theme.getStyle('label') // {color: red, fontFamily: 'Roboto'}
 ```
-#####[JS Bin][jsbin-mixins]
+##### [JS Bin][jsbin-mixins]
 
 
-###Doing logic in style source
+### Doing logic in style source
 The first argument of the style source is the theme so you can ```.getStyle()``` other styles in it.
 ```javascript
 theme.setSource('palette', () => ({
@@ -64,12 +64,12 @@ theme.setSource('label', (theme) => {
 
 theme.getStyle('label') // {color: 'navajowhite', backgroudColor: ?}
 ```
-#####[JS Bin][jsbin-doing-logic-in-style]
+##### [JS Bin][jsbin-doing-logic-in-style]
 
 You can manage (and later customize)  your other configs and variables (like colors, spacing, transitions, etc.) it the same way as the other styles!
 
 
-###Using modifiers
+### Using modifiers
 If you used that, it's similar to the [old Radium modifiers](https://github.com/FormidableLabs/radium/blob/v0.10.3/docs/guides/overview.md#modifiers):  
 ```javascript
 theme.setSource('label', () => ({
@@ -88,7 +88,7 @@ theme.setSource('label', () => ({
 var modifier = {error: true, kind: 'dotted'}
 theme.getStyle('label', modifier) // {color: 'red', borderStyle: 'dotted'}
 ```
-#####[JS Bin][jsbin-using-modifiers]
+##### [JS Bin][jsbin-using-modifiers]
 
 You can add some optional part to your style as objects and activate them with the values of the modifier object.
 Nested parts will be also resolved:
@@ -109,7 +109,7 @@ theme.setSource('label', () => ({
 var modifier = {primary: true, hover: true}
 theme.getStyle('label', modifier) // {color: 'teal'}
 ```
-#####[JS Bin][jsbin-nested-modifiers]
+##### [JS Bin][jsbin-nested-modifiers]
 
 Modifiers is passed as the second argument to the style source so you you can use it to get other styles with the same modifier:
 ```javascript
@@ -123,8 +123,8 @@ theme.setSource('label', (theme, modifier) => {
 })
 var style = theme.getStyle('label', {size: 'xl'})
 ```
-#####[JS Bin][jsbin-modifiers-logic]
-###Extending source
+##### [JS Bin][jsbin-modifiers-logic]
+### Extending source
 ```theme.setSource(name, source)``` simply replaces  the old source if the theme has one with the same name. If you want to keep the original source and extend with an other one you can use ```theme.extendSource(name, source)```:
 ```javascript
 theme.setSource('label', () => ({

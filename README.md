@@ -177,7 +177,7 @@ class Button extends React.Component() {
   getTheme() {
     return this.context.theme || defaultTheme
   }
-  reder() {
+  render() {
     var {label, mod, style} = this.props;
     var s = this.getTheme().getStyle('button', mod, style)
     return <button style={s}>{label}</button>
